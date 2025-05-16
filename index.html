@@ -3,30 +3,65 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clínica de Psicologia - Seu Espaço de Cuidado</title>
+<title>Clínica de Psicologia</title>
 <style>
   body {
     font-family: Arial, sans-serif;
-    background-color: #fff; /* Fundo branco */
-    color: #4b3b61;
     margin: 0;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #333;
   }
-  .content-wrapper {
-    background-color: rgba(230, 230, 250, 0.85);
-    max-width: 900px;
-    margin: 150px auto 50px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(75, 59, 97, 0.3);
-  }
-  header, footer {
-    background-color: rgba(138, 43, 226, 0.85);
+
+  header {
+    background-color: #5a4e7c;
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
     position: fixed;
+    top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(75, 59, 97, 0.6);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
-  header {
+
+  nav {
+    margin-top: 70px;
+    background-color: #6b5b95;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  nav a {
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a.active {
+    background-color: #8c7ae6;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 140px auto 50px;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255,
