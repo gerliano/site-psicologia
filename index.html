@@ -26,11 +26,17 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
 
     header h1 {
       font-weight: 700;
       color: #2f4f4f;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
@@ -39,6 +45,7 @@
       margin-left: 25px;
       font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -53,14 +60,11 @@
 
     section {
       margin-bottom: 50px;
-
-      /* Inicialmente invisível e deslocada para baixo */
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
-    /* Quando a seção estiver visível, aplicar animação */
     section.visible {
       opacity: 1;
       transform: translateY(0);
@@ -72,6 +76,7 @@
       border-bottom: 2px solid #a3c4bc;
       padding-bottom: 5px;
       font-weight: 700;
+      font-size: 1.5rem;
     }
 
     p {
@@ -92,6 +97,7 @@
       display: block;
       margin-bottom: 6px;
       font-weight: 600;
+      font-size: 1rem;
     }
 
     input[type="text"],
@@ -104,6 +110,7 @@
       border-radius: 5px;
       font-size: 1rem;
       resize: vertical;
+      font-family: inherit;
     }
 
     textarea {
@@ -204,26 +211,28 @@
   </footer>
 
   <script>
-    // Função para verificar se o elemento está visível na viewport
-    function isInViewport(element) {
-      const rect = element.getBoundingClientRect();
-      return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100
-      );
-    }
-
-    function checkAnimation() {
+    document.addEventListener('DOMContentLoaded', function () {
       const sections = document.querySelectorAll('.animate-section');
-      sections.forEach(section => {
-        if (isInViewport(section)) {
-          section.classList.add('visible');
-        }
-      });
-    }
 
-    // Verifica no scroll e no carregamento da página
-    window.addEventListener('scroll', checkAnimation);
-    window.addEventListener('load', checkAnimation);
+      const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // 10% do elemento visível para disparar
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Para animar só uma vez
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
   </script>
 </body>
 </html>
