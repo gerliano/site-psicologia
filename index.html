@@ -9,11 +9,11 @@
     font-family: Arial, sans-serif;
     background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
     background-size: cover;
-    color: #4b3b61; /* tom lilás escuro para texto */
+    color: #4b3b61;
     margin: 0;
   }
   .content-wrapper {
-    background-color: rgba(230, 230, 250, 0.85); /* lilás claro transparente */
+    background-color: rgba(230, 230, 250, 0.85);
     max-width: 900px;
     margin: 150px auto 50px;
     padding: 20px;
@@ -21,7 +21,7 @@
     box-shadow: 0 0 15px rgba(75, 59, 97, 0.3);
   }
   header, footer {
-    background-color: rgba(138, 43, 226, 0.85); /* azul violeta */
+    background-color: rgba(138, 43, 226, 0.85);
     color: white;
     text-align: center;
     padding: 20px;
@@ -37,11 +37,11 @@
     bottom: 0;
   }
   nav {
-    background-color: rgba(102, 51, 153, 0.85); /* roxo escuro */
+    background-color: rgba(102, 51, 153, 0.85);
     position: fixed;
     top: 70px;
     width: 100%;
-    z-index: 999;
+    z-index: 1001;
     display: flex;
     justify-content: center;
     box-shadow: 0 2px 8px rgba(75, 59, 97, 0.5);
@@ -65,13 +65,13 @@
   }
   nav a:hover,
   nav a.active {
-    background-color: #7b68ee; /* medium slate blue */
+    background-color: #7b68ee;
   }
   main {
     padding: 20px;
   }
   h1, h2 {
-    color: #6a5acd; /* slate blue */
+    color: #6a5acd;
     margin-bottom: 15px;
   }
   p, ul {
@@ -106,4 +106,146 @@
   button {
     background-color: #7b68ee;
     color: white;
-    border
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+  button:hover {
+    background-color: #6a5acd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(106, 90, 205, 0.7);
+  }
+  /* Responsividade */
+  @media (max-width: 600px) {
+    nav ul {
+      flex-direction: column;
+      background-color: rgba(102, 51, 153, 0.95);
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      display: none;
+      z-index: 1002;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    nav li {
+      text-align: center;
+    }
+    .menu-toggle {
+      display: block;
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      cursor: pointer;
+      font-size: 28px;
+      color: white;
+      user-select: none;
+      z-index: 1003;
+    }
+  }
+  .menu-toggle {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Clínica de Psicologia - Seu Espaço de Cuidado</h1>
+</header>
+
+<nav>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <ul id="menu">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#atendimento">Atendimento</a></li>
+  </ul>
+</nav>
+
+<div class="content-wrapper">
+  <main>
+    <section id="home">
+      <h2>Bem-vindo(a)!</h2>
+      <p>Nosso compromisso é cuidar do seu bem-estar emocional e mental. Aqui você encontrará apoio, escuta ativa e técnicas que ajudam no seu crescimento pessoal.</p>
+    </section>
+
+    <section id="atendimento">
+      <h2>Atendimento</h2>
+      <p>Oferecemos atendimento psicológico individual para diversas demandas, como ansiedade, depressão, estresse e desenvolvimento pessoal.</p>
+      <ul>
+        <li>Consultas presenciais e online</li>
+        <li>Horários flexíveis</li>
+        <li>Atendimento humanizado e sigiloso</li>
+      </ul>
+      <p>Para agendar uma consulta, preencha o formulário abaixo:</p>
+
+      <form id="contactForm">
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" />
+
+        <label for="preferencia">Preferência de Atendimento</label>
+        <select id="preferencia" name="preferencia" required>
+          <option value="">-- Selecione --</option>
+          <option value="presencial">Presencial</option>
+          <option value="online">Online</option>
+        </select>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva seu motivo de consulta (opcional)"></textarea>
+
+        <button type="submit">Enviar Pedido</button>
+      </form>
+
+      <p id="formMessage" style="color:green; display:none; margin-top: 15px;">Obrigado! Seu pedido foi enviado. Entraremos em contato em breve.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Clínica de Psicologia. Todos os direitos reservados.</p>
+  </footer>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  const links = document.querySelectorAll('nav a');
+
+  links.forEach(link => {
+    link.addEventListener('click', function() {
+      links.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      menu.classList.remove('show');
+    });
+  });
+
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    formMessage.style.display = 'none';
+    setTimeout(() => {
+      formMessage.style.display = 'block';
+      form.reset();
+    }, 800);
+  });
+</script>
+
+</body>
+</html>
