@@ -26,11 +26,17 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
 
     header h1 {
       font-weight: 700;
       color: #2f4f4f;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
@@ -39,6 +45,7 @@
       margin-left: 25px;
       font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -48,4 +55,109 @@
     main {
       max-width: 900px;
       margin: 30px auto;
-      padding:
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #517664;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #a3c4bc;
+      padding-bottom: 5px;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* Formulário contato */
+    form {
+      background-color: #dbe9e2;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1.5px solid #a3c4bc;
+      border-radius: 5px;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      background-color: #517664;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3a5947;
+    }
+
+    footer {
+      background-color: #a3c4bc;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      color: #2f4f4f;
+      margin-top: 60px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      main {
+        margin: 20px 15px;
+      }
+    }
+  </style>
